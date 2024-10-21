@@ -152,28 +152,46 @@ console.log(`You are here: ${currentPage}`);
 
 Implementing a carousel that loops infinitely:
 ```javascript
-class Carousel {
-  constructor(items) {
-    this.items = items;
-    this.currentIndex = 0;
-  }
+// Separate state to keep track of the current index
+let currentIndex = 0;
 
-  next() {
-    this.currentIndex = (this.currentIndex + 1) % this.items.length;
-    return this.items.at(this.currentIndex);
-  }
-
-  previous() {
-    this.currentIndex = (this.currentIndex - 1 + this.items.length) % this.items.length;
-    return this.items.at(this.currentIndex);
-  }
+// Function to create the next function
+function createNext(items) {
+  return function next() {
+    currentIndex = (currentIndex + 1) % items.length; 
+    return items.at(currentIndex);
+  };
 }
 
-const carousel = new Carousel(['Image1', 'Image2', 'Image3']);
-console.log(carousel.next());  // 'Image2'
-console.log(carousel.next());  // 'Image3'
-console.log(carousel.next());  // 'Image1'
-console.log(carousel.previous());  // 'Image3'
+
+function createPrevious(items) {
+  return function previous() {
+    currentIndex = (currentIndex - 1 + items.length) % items.length;
+    return items.at(currentIndex);
+  };
+}
+
+
+function createCurrentItem(items) {
+  return function currentItem() {
+    return items.at(currentIndex);
+  };
+}
+
+// Test the code
+const items = ['Image1', 'Image2', 'Image3', 'Image4', 'Image5'];
+const next = createNext(items);
+const previous = createPrevious(items);
+const currentItem = createCurrentItem(items);
+
+console.log(currentItem());  // 'Image1'
+console.log(next());         // 'Image2'
+console.log(next());         // 'Image3'
+console.log(next());         // 'Image4'
+console.log(previous());     // 'Image3'
+console.log(currentItem());  // 'Image3'
+
+
 ```
 
 Thanks for reading, builders 🙇. Look out for some code challenges to practice implementation of some of these methods soon! 😉
