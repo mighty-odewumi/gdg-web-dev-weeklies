@@ -42,7 +42,7 @@ const cart = [
 ];
 
 const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-console.log(`Total: NGN${total.toFixed(2)}`);
+console.log(`Total: NGN${total.toFixed(2)}`); // Total: NGN115.97
 ```
 
 Grouping blog posts by category:
@@ -59,7 +59,7 @@ const groupedPosts = posts.reduce((acc, post) => {
   return acc;
 }, {});
 
-console.log(groupedPosts);
+console.log(groupedPosts); // Output: { JavaScript: [...], CSS: [...] }
 ```
 
 ## 3. Array.prototype.some()
@@ -147,7 +147,7 @@ Accessing the last element in a breadcrumb trail:
 ```javascript
 const breadcrumbs = ['Home', 'Products', 'Electronics', 'Smartphones'];
 const currentPage = breadcrumbs.at(-1);
-console.log(`You are here: ${currentPage}`);
+console.log(`You are here: ${currentPage}`); // Output: "You are here: Smartphones"
 ```
 
 Implementing a carousel that loops infinitely:
@@ -155,7 +155,7 @@ Implementing a carousel that loops infinitely:
 // Separate state to keep track of the current index
 let currentIndex = 0;
 
-// Function to create the next function
+// Wrapper Function to create the next function
 function createNext(items) {
   return function next() {
     currentIndex = (currentIndex + 1) % items.length; 
@@ -163,7 +163,7 @@ function createNext(items) {
   };
 }
 
-
+// Wrapper function to create the previous function 
 function createPrevious(items) {
   return function previous() {
     currentIndex = (currentIndex - 1 + items.length) % items.length;
@@ -171,7 +171,7 @@ function createPrevious(items) {
   };
 }
 
-
+// Wrapper function to create the currentItem function
 function createCurrentItem(items) {
   return function currentItem() {
     return items.at(currentIndex);
