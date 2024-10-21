@@ -42,7 +42,7 @@ const cart = [
 ];
 
 const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-console.log(`Total: NGN${total.toFixed(2)}`); // Total: NGN115.97
+console.log(`Total: NGN${total.toFixed(2)}`); // Total: NGN131.96
 ```
 
 Grouping blog posts by category:
@@ -104,7 +104,7 @@ const todoItems = [
 ];
 
 const allCompleted = todoItems.every(item => item.completed);
-console.log(`All todos completed: ${allCompleted}`);
+console.log(`All todos completed: ${allCompleted}`);  // All todos completed: false
 ```
 
 ## 5. Array.prototype.flatMap()
@@ -122,7 +122,7 @@ const blogPosts = [
 ];
 
 const allTags = blogPosts.flatMap(post => post.tags);
-console.log(`All tags: ${allTags}`);
+console.log(`All tags: ${allTags}`);  // All tags: javascript,programming,css,design,javascript,react,hooks
 ```
 
 Creating a flat list of comments and replies:
@@ -134,7 +134,12 @@ const comments = [
 ];
 
 const allComments = comments.flatMap(comment => [comment.text, ...comment.replies]);
-console.log(allComments);
+console.log(allComments);  // [
+  "Great article!",
+  "Thanks!",
+  "Glad you enjoyed it",
+  ...
+]
 ```
 
 ## 6. Array.prototype.at()
